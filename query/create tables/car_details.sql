@@ -7,5 +7,5 @@ CREATE TABLE car_details(
 	production_start DATE NOT NULL,
 	production_finish DATE NOT NULL,
 	engine_id INTEGER NOT NULL FOREIGN KEY REFERENCES engine_details(engine_id),
-	CONSTRAINT date_check CHECK(DATEDIFF(year,production_finish,production_start) > 0)
+	CONSTRAINT date_check CHECK(DATEDIFF(year,production_start,production_finish) > 0)
 	);
