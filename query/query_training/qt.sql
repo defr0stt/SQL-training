@@ -158,6 +158,33 @@ END);
 
 
 
+
+					-- UPDATE --
+/*
+-- Update ONLY for rows with price >= 38000
+-- with case
+--
+UPDATE available_cars
+SET price = 
+	CASE 
+		WHEN price >= 38000 THEN 40000
+		ELSE 600
+	END
+WHERE price >= 38000;
+--
+-- default update
+--
+UPDATE available_cars
+SET price = price * 2
+WHERE price >= 500 AND price <= 90000;
+--
+UPDATE available_cars
+SET price = price + 500
+WHERE car_id IN (14,23,20);
+*/
+
+
+
 					-- JOINS --
 /*
 -- (INNER) JOIN = records that have matching values in both tables
@@ -185,3 +212,86 @@ SELECT car_brand
 FROM car_details
 WHERE EXISTS (SELECT * FROM car_details WHERE car_id <= 20);
 */
+
+
+
+					-- DATE --
+/*
+-- DATEADD(day/year, count of days/years, column) = add date
+-- GETDATE() = current date
+-- DATEPART(d/m/y, column) = return part of date
+-- DATEDIFF() = difference between 2 dates
+-- CONVERT(VARCHAR(...), date, 1-21(date style))
+--
+SELECT car_brand
+FROM car_details
+WHERE EXISTS (SELECT * FROM car_details WHERE car_id <= 20);
+*/
+
+
+
+					-- STRING FUNCTIONS --
+/*
+ASCII		Returns the ASCII value for the specific character
+CHAR		Returns the character based on the ASCII code
+CHARINDEX	Returns the position of a substring in a string
+CONCAT		Adds two or more strings together
+CONCAT_WS	Adds two or more strings together with a separator
+DATALENGTH	Returns the number of bytes used to represent an expression
+DIFFERENCE	Compares two SOUNDEX values, and returns an integer value
+FORMAT		Formats a value with the specified format
+LEFT		Extracts a number of characters from a string (starting from left)
+LEN			Returns the length of a string
+LOWER		Converts a string to lower-case
+LTRIM		Removes leading spaces from a string
+NCHAR		Returns the Unicode character based on the number code
+PATINDEX	Returns the position of a pattern in a string
+QUOTENAME	Returns a Unicode string with delimiters added to make the string a valid SQL Server delimited identifier
+REPLACE		Replaces all occurrences of a substring within a string, with a new substring
+REPLICATE	Repeats a string a specified number of times
+REVERSE		Reverses a string and returns the result
+RIGHT		Extracts a number of characters from a string (starting from right)
+RTRIM		Removes trailing spaces from a string
+SOUNDEX		Returns a four-character code to evaluate the similarity of two strings
+SPACE		Returns a string of the specified number of space characters
+STR			Returns a number as string
+STUFF		Deletes a part of a string and then inserts another part into the string, starting at a specified position
+SUBSTRING	Extracts some characters from a string
+TRANSLATE	Returns the string from the first argument after the characters specified in the second argument are translated into the characters specified in the third argument.
+TRIM		Removes leading and trailing spaces (or other specified characters) from a string
+UNICODE		Returns the Unicode value for the first character of the input expression
+UPPER		Converts a string to upper-case
+*/
+
+
+
+					-- MATH FUNCTIONS --
+/*
+ABS		Returns the absolute value of a number
+ACOS	Returns the arc cosine of a number
+ASIN	Returns the arc sine of a number
+ATAN	Returns the arc tangent of a number
+ATN2	Returns the arc tangent of two numbers
+AVG		Returns the average value of an expression
+CEILING	Returns the smallest integer value that is >= a number
+COUNT	Returns the number of records returned by a select query
+COS		Returns the cosine of a number
+COT		Returns the cotangent of a number
+DEGREES	Converts a value in radians to degrees
+EXP		Returns e raised to the power of a specified number
+FLOOR	Returns the largest integer value that is <= to a number
+LOG		Returns the natural logarithm of a number, or the logarithm of a number to a specified base
+LOG10	Returns the natural logarithm of a number to base 10
+MAX		Returns the maximum value in a set of values
+MIN		Returns the minimum value in a set of values
+PI		Returns the value of PI
+POWER	Returns the value of a number raised to the power of another number
+RADIANS	Converts a degree value into radians
+RAND	Returns a random number
+ROUND	Rounds a number to a specified number of decimal places
+SIGN	Returns the sign of a number
+SIN		Returns the sine of a number
+SQRT	Returns the square root of a number
+SQUARE	Returns the square of a number
+SUM		Calculates the sum of a set of values
+TAN		Returns the tangent of a number
