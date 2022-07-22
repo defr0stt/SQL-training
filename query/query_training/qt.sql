@@ -197,6 +197,12 @@ SELECT * FROM car_details AS det
 SELECT * FROM car_details AS det 
 	RIGHT JOIN available_cars AS cars ON det.car_id = cars.car_id
 -- in this case INNER = RIGHT and LEFT = FULL
+
+-- self join 
+SELECT car1.car_brand, car2.car_brand_model FROM car_details AS car1, car_details AS car2
+WHERE car1.car_id <> car2.car_id
+	AND car1.car_brand = car2.car_brand 
+ORDER BY car1.car_brand;
 */
 
 
