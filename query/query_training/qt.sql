@@ -1,5 +1,22 @@
 USE query_training;
 
+
+					-- INTERSECT, EXCEPT --
+/*
+-- INTERSECT = values what are available in table1 and in table2
+-- EXCEPT = values what are available in table1 but not in table2
+
+SELECT car_id FROM car_details
+INTERSECT
+SELECT car_id FROM available_cars
+--
+SELECT car_id FROM car_details
+EXCEPT
+SELECT car_id FROM available_cars
+*/
+
+
+
 					-- DISCTINCT --
 /*
 -- DISTINCT = unique values in column
