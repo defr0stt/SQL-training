@@ -236,6 +236,39 @@ WHERE EXISTS (SELECT * FROM car_details WHERE car_id <= 20);
 
 
 
+					-- TRANSACTIONS --
+/*
+BEGIN TRANSACTION tran_1
+	WITH MARK 'UPDATE car price'
+	UPDATE available_cars
+		SET price = price + 5000
+		WHERE car_id = 21
+	SELECT * FROM available_cars
+ROLLBACK TRANSACTION	-- cancel changes
+-- COMMIT TRANSACTION = accept changes
+SELECT * FROM available_cars
+
+--
+
+BEGIN TRANSACTION
+	UPDATE available_cars
+		SET price = price + 5000
+		WHERE car_id = 21
+	SELECT * FROM available_cars
+
+	SAVE TRANSACTION tran_2		-- savepoints = checkpionts
+
+	UPDATE available_cars
+		SET price = price + 5000
+		WHERE car_id = 21
+	SELECT * FROM available_cars
+
+	ROLLBACK TRANSACTION tran_2	-- cancel changes, go to savepoint
+	-- COMMIT TRANSACTION = accept changes
+	SELECT * FROM available_cars
+COMMIT TRANSACTION
+*/
+
 					-- STRING FUNCTIONS --
 /*
 ASCII		Returns the ASCII value for the specific character
@@ -301,3 +334,4 @@ SQRT	Returns the square root of a number
 SQUARE	Returns the square of a number
 SUM		Calculates the sum of a set of values
 TAN		Returns the tangent of a number
+*/
